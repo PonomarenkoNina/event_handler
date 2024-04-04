@@ -13,14 +13,20 @@
     </style>
     <script>
       window.onload = init;
+      //Вибірка елементів по імені тега img, результат зберігається в images, перебор всіх зображень і призначення обробника подій клацання кожному зображенню
       function init() {
         var images = document.getElementsByTagName("img");
         for (var i = 0; i < images.length; i++) {
           images[i].onclick = showAnswer;
         }
       }
+      //Подія клацання для якого створюється об'єкт події, який передається обробнику події
       function showAnswer(eventObj) {
-        var image = eventObj.target;
+        var image = eventObj.target; //Властивість об'єкта події містить посилання на елемент, на якому було зроблено клацання.
+        //Ідентифікатор кожного зображення відповідає імені нормальної версії зображення (якщо відкинути розширення ".jpg"), заміна властивості src елемента
+        var name = image.id;
+        name = name + ".jpg";
+        image.src = name;
       }
     </script>
   </head>
