@@ -16,7 +16,8 @@
         //Вибірка елементів по імені тега img, результат зберігається в images, перебор всіх зображень і призначення обробника подій клацання кожному зображенню
         var images = document.getElementsByTagName("img");
         for (var i = 0; i < images.length; i++) {
-          images[i].onclick = showAnswer;
+          images[i].onmouseover = showAnswer;
+          images[i].onmouseout = reblur; //Функція reblur призначається обробником події mouseout (замість події таймера). Для цього вона призначається властивістю наоб'ємізображення
         }
       };
       //Подія клацання для якого створюється об'єкт події, який передається обробнику події
@@ -26,11 +27,10 @@
         var name = image.id;
         name = name + ".jpg";
         image.src = name;
-
-        setTimeout(reblur, 2000, image); //При виводі нормального зображення викликаємо setTimeout для призначення події, яке спрацює через 2 секунди
       }
-      //Обробник при виклику буде отримувавти зображення
-      function reblur(image) {
+      //reblur використовується як обробник події mouseout, для отримання зображення, яке слід розмити, необхідно використовувати об'єкт події. Як і у випадку з showAnswer, для отримання об'єкта буде використано властивість target
+      function reblur(eventObj) {
+        var image = eventObj.target;
         var name = image.id;
         name = name + "blur.jpg";
         image.src = name;
