@@ -12,20 +12,27 @@
       }
     </style>
     <script>
-      window.onload = init;
-      //Вибірка елементів по імені тега img, результат зберігається в images, перебор всіх зображень і призначення обробника подій клацання кожному зображенню
-      function init() {
+      window.onload = function () {
+        //Вибірка елементів по імені тега img, результат зберігається в images, перебор всіх зображень і призначення обробника подій клацання кожному зображенню
         var images = document.getElementsByTagName("img");
         for (var i = 0; i < images.length; i++) {
           images[i].onclick = showAnswer;
         }
-      }
+      };
       //Подія клацання для якого створюється об'єкт події, який передається обробнику події
       function showAnswer(eventObj) {
         var image = eventObj.target; //Властивість об'єкта події містить посилання на елемент, на якому було зроблено клацання.
         //Ідентифікатор кожного зображення відповідає імені нормальної версії зображення (якщо відкинути розширення ".jpg"), заміна властивості src елемента
         var name = image.id;
         name = name + ".jpg";
+        image.src = name;
+
+        setTimeout(reblur, 2000, image); //При виводі нормального зображення викликаємо setTimeout для призначення події, яке спрацює через 2 секунди
+      }
+      //Обробник при виклику буде отримувавти зображення
+      function reblur(image) {
+        var name = image.id;
+        name = name + "blur.jpg";
         image.src = name;
       }
     </script>
