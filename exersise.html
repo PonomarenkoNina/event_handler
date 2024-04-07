@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Pirates Booty</title>
     <script>
+      //Exersise 1
       //Визначити координати кладу, написати код, який виводить координати при наведенні вказівника миші на точку карти
       window.onload = init;
       function init() {
@@ -18,10 +19,22 @@
         map.innerHTML = "Map coordinates: " + x + ", " + y;
       }
       //Coordinates: 200, 190
+
+      //Exersise 2
+      function resize() {
+        var element = document.getElementById("display");
+        element.innerHTML = element.innerHTML + " that tickles!";
+      }
     </script>
   </head>
   <body>
     <img id="map" src="map.jpg" />
     <p id="coords">Move mouse to find coordinates...</p>
+    <p id="display">
+      Whatever you do, don't resize this window! I'm warning you!
+    </p>
+    <script>
+      window.onresize = resize;
+    </script>
   </body>
 </html>
