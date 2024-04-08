@@ -17,7 +17,7 @@
         var images = document.getElementsByTagName("img");
         for (var i = 0; i < images.length; i++) {
           images[i].onmouseover = showAnswer;
-          images[i].onmouseout = reblur; //Функція reblur призначається обробником події mouseout (замість події таймера). Для цього вона призначається властивістю наоб'ємізображення
+          images[i].onmouseout = reblur; //Функція reblur призначається обробником події mouseout (замість події таймера). Для цього вона призначається властивістю на об'ємі зображення
         }
       };
       //Подія клацання для якого створюється об'єкт події, який передається обробнику події
